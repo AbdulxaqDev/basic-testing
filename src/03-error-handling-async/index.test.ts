@@ -1,4 +1,4 @@
-import { throwError, throwCustomError, resolveValue , MyAwesomeError, rejectCustomError} from './index';
+import { throwError, throwCustomError, resolveValue, rejectCustomError} from './index';
 
 describe('resolveValue', () => {
   test('should resolve provided value', async () => {
