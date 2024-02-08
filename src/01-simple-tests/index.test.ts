@@ -1,4 +1,10 @@
-import { simpleCalculator, Action, RawCalculatorInput } from './index';
+import { simpleCalculator, Action } from './index';
+
+export type RawCalculatorInput = {
+  a: unknown;
+  b: unknown;
+  action: unknown;
+};
 
 function genInput(a: unknown, b: unknown, action: unknown): RawCalculatorInput {
   return {
