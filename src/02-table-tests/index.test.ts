@@ -14,7 +14,7 @@ describe.each(testCases)(
   '$a $action $b',
   ({ a, b, action, expected }) => {
     test(`returns ${expected}`, () => {
-      expect(simpleCalculator({ a, b, action })).toBe(expected);
+      expect(simpleCalculator({ a, b, action })).toEqual(expected);
     });
   },
   3000,

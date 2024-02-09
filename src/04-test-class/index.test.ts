@@ -13,7 +13,7 @@ describe('BankAccount', () => {
   const firstBalance = firstAccount.getBalance();
 
   test('should create account with initial balance', () => {
-    expect(firstAccount.getBalance()).toBe(initialBalance);
+    expect(firstAccount.getBalance()).toEqual(initialBalance);
   });
 
   test('should throw InsufficientFundsError error when withdrawing more than balance', () => {
@@ -39,7 +39,7 @@ describe('BankAccount', () => {
     const oldBalance = firstAccount.getBalance();
     firstAccount.deposit(depositMoney);
 
-    expect(firstAccount.getBalance()).toBe(oldBalance + depositMoney);
+    expect(firstAccount.getBalance()).toEqual(oldBalance + depositMoney);
   });
 
   test('should withdraw money', () => {
@@ -47,7 +47,7 @@ describe('BankAccount', () => {
     const oldBalance = firstAccount.getBalance();
     const withdrawAccount = firstAccount.withdraw(withdrawMoney);
 
-    expect(withdrawAccount.getBalance()).toBe(oldBalance - withdrawMoney);
+    expect(withdrawAccount.getBalance()).toEqual(oldBalance - withdrawMoney);
   });
 
   test('should transfer money', () => {
@@ -58,10 +58,10 @@ describe('BankAccount', () => {
     // Checking the sender account balance after transfer
     expect(
       firstAccount.transfer(transferMoney, secondAccound).getBalance(),
-    ).toBe(senderBalance - transferMoney);
+    ).toEqual(senderBalance - transferMoney);
 
     // Checking the receiver account balance after receiving transfer money
-    expect(secondAccound.getBalance()).toBe(receiverBalance + transferMoney);
+    expect(secondAccound.getBalance()).toEqual(receiverBalance + transferMoney);
   });
 
   test('fetchBalance should return number in case if request did not failed', async () => {
@@ -72,7 +72,7 @@ describe('BankAccount', () => {
     const fetchedBalance = await firstAccount.fetchBalance();
 
     expect(typeof fetchedBalance).toBe('number');
-    expect(fetchedBalance).toBe(mockBalance);
+    expect(fetchedBalance).toEqual(mockBalance);
   });
 
   test('should set new balance if fetchBalance returned number', async () => {
@@ -83,7 +83,7 @@ describe('BankAccount', () => {
 
     await mockAccount.synchronizeBalance();
 
-    expect(mockAccount.getBalance()).toBe(mockBalance);
+    expect(mockAccount.getBalance()).toEqual(mockBalance);
   });
 
   test('should throw SynchronizationFailedError if fetchBalance returned null', async () => {
