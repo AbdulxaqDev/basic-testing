@@ -3,11 +3,13 @@ import {
   throwCustomError,
   resolveValue,
   rejectCustomError,
+  MyAwesomeError,
 } from './index';
 
 describe('resolveValue', () => {
   test('should resolve provided value', async () => {
-    expect(resolveValue('Resolved')).resolves.toBe('Resolved');
+    const resovedValue = 'Resolved';
+    await expect(resolveValue(resovedValue)).resolves.toBe(resovedValue);
   });
 });
 
@@ -18,20 +20,18 @@ describe('throwError', () => {
   });
 
   test('should throw error with default message if message is not provided', () => {
-    expect(() => throwError()).toThrow('Oops!');
+    expect(() => throwError()).toThrowError('Oops!');
   });
 });
 
 describe('throwCustomError', () => {
   test('should throw custom error', () => {
-    expect(() => throwCustomError()).toThrow(
-      'This is my awesome custom error!',
-    );
+    expect(() => throwCustomError()).toThrowError(MyAwesomeError);
   });
 });
 
 describe('rejectCustomError', () => {
   test('should reject custom error', async () => {
-    await expect(rejectCustomError()).rejects.toThrow();
+    await expect(rejectCustomError()).rejects.toThrowError(MyAwesomeError);
   });
 });
